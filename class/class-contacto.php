@@ -1,6 +1,5 @@
 <?php
 
-
 class contacto{
     private $nombre;
     private $apellido;
