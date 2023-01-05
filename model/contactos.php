@@ -54,7 +54,8 @@ class contactos{
 
     public static function insert($nombre, $apellido, $email, $telefono){
         $db = new conexion();
-        $query = "INSERT INTO contactos (nombre, apellido, email, telefono) VALUES ('".$nombre."', '".$apellido."', '".$email."', '".$telefono."')";
+        $query = "INSERT INTO contactos (nombre, apellido, email, telefono) 
+        VALUES ('".$nombre."', '".$apellido."', '".$email."', '".$telefono."')";
         $db-> query($query);
         if($db->affected_rows){
 
@@ -66,9 +67,8 @@ class contactos{
 
     public static function update($id, $nombre, $apellido, $email, $telefono){
         $db = new conexion();
-        $query = "UPDATE contactos SET
-        nombre = '".$nombre."', apellido = '".$apellido."', email = '".$email."', telefono = '".$telefono."' 
-        WHERE id = $id";
+        $query = "UPDATE contactos SET nombre = '".$nombre."', apellido = '".$apellido."', email = '".$email."', telefono = '".$telefono."'
+        WHERE id = '".$id."' ";
         $db-> query($query);
         if($db->affected_rows){
 

@@ -18,6 +18,7 @@ header("Content-Type: application/json");
                 if($datos != NULL){
                     if(contactos::insert($datos->nombre, $datos->apellido, $datos->email, $datos->telefono)){
                         http_response_code(200);
+                        echo "Contacto agregado exitosamente";
                     }//End
                     else{
                         http_response_code(400);
@@ -33,6 +34,7 @@ header("Content-Type: application/json");
                 if($datos != NULL){
                     if(contactos::update($datos->id, $datos->nombre, $datos->apellido, $datos->email, $datos->telefono)){
                         http_response_code(200);
+                        echo "Contacto actualizado exitosamente";
                     }//End
                     else{
                         http_response_code(400);
@@ -59,6 +61,7 @@ header("Content-Type: application/json");
                 break;
 
                 default:
+                http_response_code(405);
                 break;
         }
 
