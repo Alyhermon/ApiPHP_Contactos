@@ -12,6 +12,18 @@ header("Content-Type: application/json");
                     echo json_encode(contactos::getAll());
                 break;
             case 'POST':
+                $datos = json_decode(file_get_contents('php://input'));
+                if($datos != NULL){
+                    if(contactos::insert($datos->nombre, $datos->apellido, $datos->email, $datos->telefono)){
+                        http_response_code(200);
+                    }//End
+                    else{
+                        http_response_code(400);
+                    }
+                }
+                else{
+                    http_response_code(405);
+                }
                 
                 break;
             case 'PUT':
