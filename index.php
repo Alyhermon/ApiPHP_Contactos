@@ -6,7 +6,12 @@ require_once "model/contactos.php";
 header("Content-Type: application/json");
         switch($_SERVER['REQUEST_METHOD']){
             case 'GET':
-                    echo json_encode(contactos::getAll());                    
+                if (isset($_GET['id'])){
+                    echo json_encode(contactos::getWhere($_GET['id']));
+                }else{
+                    echo json_encode(contactos::getAll()); 
+
+                }                    
                 break;
             case 'POST':
                 $datos = json_decode(file_get_contents('php://input'));
